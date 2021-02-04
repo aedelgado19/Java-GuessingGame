@@ -1,0 +1,82 @@
+/*
+ * Author: Ally Delgado
+ * Date: September 12, 2019
+ * GuessingGame has user guess a number, and compares it with the random number generated
+ * 
+ */
+
+import java.util.Scanner;
+
+public class GuessingGame {
+
+	public static void main(String[] args) {
+	
+	  boolean RestartGame = true;
+	  Scanner scanner = new Scanner(System.in);
+		
+	  while (RestartGame == true) {
+		  
+		//variable declarations
+		int RandomNumber = (int) (Math.random() * 51);
+		int IntegerFormOfInput = -1;
+		int AmountOfGuesses = 0;
+		String UserInputNumber;
+		
+		
+		
+		//display random number and ask what user's chosen number is
+		System.out.println("Random number is " + RandomNumber);
+		
+		
+		//while the user input is different from the random number, print a message accordingly
+		while (IntegerFormOfInput != RandomNumber) {
+			System.out.println("Guess a number: ");
+			UserInputNumber = scanner.nextLine();
+			IntegerFormOfInput = Integer.parseInt(UserInputNumber);
+			
+			
+			if (IntegerFormOfInput < RandomNumber) {
+				System.out.println("Your guess was too low. Want to try again?");
+			}
+
+			if (IntegerFormOfInput > RandomNumber) {
+				System.out.println("Your guess was too high. Want to try again?");
+				
+			}
+			
+			AmountOfGuesses++;
+			
+		}
+		//when user gets correct answer, let them know
+		System.out.println("Your guess was correct!");
+		
+		//display how many guesses it took
+		if (IntegerFormOfInput == RandomNumber) {
+			
+			System.out.println("Number of guesses: " + AmountOfGuesses);
+		
+		}
+		//ask if user wants to play again
+				System.out.println("Want to play again?");
+				String YesOrNo = scanner.nextLine();
+				
+				if (YesOrNo.equals("yes") || YesOrNo.equals ("y")) {
+					RestartGame = true;
+				} else {
+					RestartGame = false;
+				}
+		
+	  }
+	  
+	
+
+		
+	}
+}
+
+
+
+
+
+
+							
